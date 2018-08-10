@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "noImplicitAny": true,
+        "target": "es6",
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "outDir": "dist/",
+        "sourceMap": true,
+        "types" : [ "node", "core-js" ],
+        "lib" : [ "es2016", "dom"],
+        "experimentalDecorators": true
+
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
+    ]
+}
