@@ -1,39 +1,54 @@
+import { ListNode } from './ListNode';
+
 export class LinkedList {
 
-    public length: number = 0;
-    public index: number = 0;
-
     /**
-     * Add the given item to the end of the list.
-     * @param item the item to add to the end of the list.
+     * Add the given data value to the beginning of the list.
+     * @param value the data value to be contained in the new ListNode.
+     * @returns the ListNode that was created, containing the given data value.
      */
-    public add(item: string) {
-        // TODO
-    }
+    public addFirst(value: string): ListNode {
 
-    /**
-     * Retrieve the next item in the list starting with the first,
-     * returning to the first once the end of the list is reached.
-     */
-    public next(): string {
         // TODO
         return;
     }
 
     /**
-     * Retrieve the previous item in the list starting with the last,
-     * returning to the last once the beginning of the list is reached.
+     * Returns the 'head' node of the linked list.
      */
-    public previous(): string {
+    public getHead(): ListNode {
+
         // TODO
         return;
     }
 
     /**
-     * Returns the item from the list at the given index.
-     * @param index
+     * Add the given data value to the end of the list.
+     * @param value the data value to be contained in the new ListNode.
+     * @returns the ListNode that was created, containing the given data value.
      */
-    public get(index: number) {
+    public addLast(value: string): ListNode {
+
+        // TODO
+        return;
+    }
+
+    /**
+     * Returns the number of ListNodes in this LinkedList.
+     */
+    public length(): number {
+
+        // TODO
+        return;
+    }
+
+    /**
+     * Returns the ListNode from the list at the given index.
+     * @param index the index of the node, starting with the head at index 0.
+     * @throws an error if the given index is invalid.
+     */
+    public get(index: number): ListNode {
+
         // TODO
         return;
     }

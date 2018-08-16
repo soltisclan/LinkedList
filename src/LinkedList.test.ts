@@ -2,6 +2,7 @@ import { fail } from 'assert';
 import * as chai from 'chai';
 import { } from 'mocha';
 import { LinkedList } from './LinkedList';
+import { ListNode } from './ListNode';
 
 const expect = chai.expect;
 
@@ -9,41 +10,166 @@ const expect = chai.expect;
 describe('Class: LinkedList', () => {
 
     let linkedList: LinkedList;
+    let oldNode: ListNode;
+    let newNode: ListNode;
 
-    // add()
-    describe('function: add()', () => {
+    // addFirst()
+    describe('function: addFirst()', () => {
 
         //
-        describe('Given an empty list, when an item is added, then it', () => {
+        describe('Given an empty list, when an item is added to beginning of the list, then it', () => {
             before(() => {
                 linkedList = new LinkedList();
-                linkedList.add('one');
+                newNode = linkedList.addFirst('one');
             });
-
-            // Assert
-            it('should should have a length of one.', () => {
-                expect(linkedList.length).to.eq(1);
+            it('should return the new ListNode that was created', () => {
+                expect(newNode).to.not.be.null;
             });
-            it('should add the item to the list.', () => {
-                expect(linkedList.get(0)).to.eq('one');
+            it('should have a value equal to the given value', () => {
+                expect(newNode.value).to.be.eq('one');
             });
-
+            it('should be the head node', () => {
+                expect(newNode.isHead).to.be.true;
+            });
+            it('should point to itself as the previous node', () => {
+                expect(newNode.previous).to.be.eq(newNode);
+            });
+            it('should point to itself as the next node', () => {
+                expect(newNode.next).to.be.eq(newNode);
+            });
         });
 
         //
-        describe('Given a populated list, when an item is added, then it', () => {
+        describe('Given a populated list, when an item is added to beginning of the list, then it', () => {
             before(() => {
                 linkedList = new LinkedList();
-                linkedList.add('one');
-                linkedList.add('two');
+                oldNode = linkedList.addFirst('one');
+                newNode = linkedList.addFirst('two');
             });
+            it('should return the new ListNode that was created', () => {
+                expect(newNode).to.not.be.null;
+            });
+            it('should have a value equal to the given value', () => {
+                expect(newNode.value).to.be.eq('two');
+            });
+            it('should be the head node', () => {
+                expect(newNode.isHead).to.be.true;
+            });
+            it('should update the previous head node to no longer be the head node', () => {
+                expect(oldNode.isHead).to.be.false;
+            });
+            it('should point to the old head node as the previous node', () => {
+                expect(newNode.previous).to.be.eq(oldNode);
+            });
+            it('should point to the old head node as the next node', () => {
+                expect(newNode.next).to.be.eq(oldNode);
+            });
+        });
+    });
 
-            // Assert
-            it('should should have a length equal to the number of items added.', () => {
-                expect(linkedList.length).to.eq(2);
+    // getHead()
+    describe('function: getHead()', () => {
+
+        //
+        describe('Given an empty list, when the head of the list is requested, then it', () => {
+            before(() => {
+                linkedList = new LinkedList();
             });
-            it('should should add the item to the end of the list.', () => {
-                expect(linkedList.get(1)).to.eq('two');
+            it('should return null', () => {
+                expect(linkedList.getHead()).to.be.null;
+            });
+        });
+
+        //
+        describe('Given an populated list, when the head of the list is requested, then it', () => {
+            before(() => {
+                linkedList = new LinkedList();
+                oldNode = linkedList.addFirst('one');
+                newNode = linkedList.addFirst('two');
+            });
+            it('should return the head ListNode', () => {
+                expect(linkedList.getHead()).to.be.eq(newNode);
+            });
+        });
+    });
+
+    // addLast()
+    describe('function: addLast()', () => {
+
+        //
+        describe('Given an empty list, when an item is added to end of the list, then it', () => {
+            before(() => {
+                linkedList = new LinkedList();
+                newNode = linkedList.addLast('one');
+            });
+            it('should return the new ListNode that was created', () => {
+                expect(newNode).to.not.be.null;
+            });
+            it('should have a value equal to the given value', () => {
+                expect(newNode.value).to.be.eq('one');
+            });
+            it('should be the head node', () => {
+                expect(newNode.isHead).to.be.true;
+            });
+            it('should point to itself as the previous node', () => {
+                expect(newNode.previous).to.be.eq(newNode);
+            });
+            it('should point to itself as the next node', () => {
+                expect(newNode.next).to.be.eq(newNode);
+            });
+        });
+
+        //
+        describe('Given a populated list, when an item is added to beginning of the list, then it', () => {
+            before(() => {
+                linkedList = new LinkedList();
+                oldNode = linkedList.addLast('one');
+                newNode = linkedList.addLast('two');
+            });
+            it('should return the new ListNode that was created', () => {
+                expect(newNode).to.not.be.null;
+            });
+            it('should have a value equal to the given value', () => {
+                expect(newNode.value).to.be.eq('two');
+            });
+            it('should not be the head node', () => {
+                expect(newNode.isHead).to.be.false;
+            });
+            it('should retain the current head node as the head node', () => {
+                expect(oldNode.isHead).to.be.true;
+            });
+            it('should point to the old last node as the previous node', () => {
+                expect(newNode.previous).to.be.eq(oldNode);
+            });
+            it('should point to the head node as the next node', () => {
+                expect(newNode.next).to.be.eq(oldNode);
+            });
+        });
+    });
+
+    // length()
+    describe('function: length()', () => {
+
+        //
+        describe('Given an empty list, when the length is returned, then it', () => {
+            before(() => {
+                linkedList = new LinkedList();
+            });
+            it('should return zero', () => {
+                expect(linkedList.length()).to.be.eq(0);
+            });
+        });
+
+        //
+        describe('Given a populated list, when the length is returned, then it', () => {
+            before(() => {
+                linkedList = new LinkedList();
+                linkedList.addLast('one');
+                linkedList.addLast('two');
+                linkedList.addLast('three');
+            });
+            it('should return the number of items in the list', () => {
+                expect(linkedList.length()).to.be.eq(3);
             });
         });
     });
@@ -52,182 +178,46 @@ describe('Class: LinkedList', () => {
     describe('function: get()', () => {
 
         //
-        describe('Given an empty list, when an item is retreived, then it', () => {
+        describe('Given an empty list, when an item at an index is returned, then it', () => {
             before(() => {
                 linkedList = new LinkedList();
             });
-
-            // Assert
-            it('should throw an error indicating the list is empty.', () => {
+            it('should throw an error indicating the invalid index', () => {
                 try {
-                    linkedList.get(0);
-                    fail();
+                    linkedList.get(1);
+                    fail('An error should have been thrown');
                 } catch (err) {
-                    expect(err.message).to.eq('The list is empty.');
+                    expect(err.message).to.be.eq('Invalid index 1');
                 }
             });
         });
 
         //
-        describe('Given a populated list, when an item is retrieved, then it', () => {
+        describe('Given an populated list, when an item at an index is returned, then it', () => {
             before(() => {
                 linkedList = new LinkedList();
-                linkedList.add('one');
-                linkedList.add('two');
+                oldNode = linkedList.addLast('one');
+                newNode = linkedList.addLast('two');
             });
-
-            // Assert
-            it('should return the item at the index (0).', () => {
-                expect(linkedList.get(0)).to.eq('one');
-            });
-            it('should return the item at the index (1).', () => {
-                expect(linkedList.get(1)).to.eq('two');
-            });
-        });
-
-        //
-        describe('Given a populated list, when an item is retrieved from an invalid index, then it', () => {
-            before(() => {
-                linkedList = new LinkedList();
-                linkedList.add('one');
-                linkedList.add('two');
-            });
-
-            // Assert
-            it('should throw an error indicating the invalid index if less than 0.', () => {
+            it('should throw an error indicating the invalid index if it is less than zero', () => {
                 try {
-                    linkedList.get(-1);
-                    fail();
+                    linkedList.get(-5);
+                    fail('An error should have been thrown');
                 } catch (err) {
-                    expect(err.message).to.eq('Invalid index -1.');
+                    expect(err.message).to.be.eq('Invalid index -5');
                 }
             });
-            it('should throw an error indicating the invalid index if greater than the length of the list.', () => {
+            it('should throw an error indicating the invalid index if it is greater than the length', () => {
                 try {
-                    linkedList.get(5);
-                    fail();
+                    linkedList.get(7);
+                    fail('An error should have been thrown');
                 } catch (err) {
-                    expect(err.message).to.eq('Invalid index 5.');
+                    expect(err.message).to.be.eq('Invalid index 7');
                 }
             });
-        });
-    });
-
-    // next()
-    describe('function: next()', () => {
-
-        //
-        describe('Given an empty list, when the next item is retrieved, then it', () => {
-            before(() => {
-                linkedList = new LinkedList();
-            });
-
-            // Assert
-            it('should return null.', () => {
-                expect(linkedList.next()).to.be.null;
+            it('should return the ListNode at the given index', () => {
+                expect(linkedList.get(1)).to.be.eq(newNode);
             });
         });
-
-        //
-        describe('Given a list with one item, when the next item is retrieved, then it', () => {
-
-            before(() => {
-                linkedList = new LinkedList();
-                linkedList.add('one');
-            });
-
-            // Assert
-            it('should return the one item in the list.', () => {
-                expect(linkedList.next()).to.eq('one');
-            });
-            it('should return the one item in the list after subsequent calls.', () => {
-                expect(linkedList.next()).to.eq('one');
-            });
-        });
-
-        //
-        describe('Given a list with multiple items, when the next item is retrieved, then it', () => {
-
-            before(() => {
-                linkedList = new LinkedList();
-                linkedList.add('one');
-                linkedList.add('two');
-                linkedList.add('three');
-            });
-
-            // Assert
-            it('should return the first item in the list after the first call.', () => {
-                expect(linkedList.next()).to.eq('one');
-            });
-            it('should return the second item in the list after the second call.', () => {
-                expect(linkedList.next()).to.eq('two');
-            });
-            it('should return the third item in the list after the third call.', () => {
-                expect(linkedList.next()).to.eq('three');
-            });
-            it('should return the first item in the list after the fourth call.', () => {
-                expect(linkedList.next()).to.eq('one');
-            });
-        });
-
-    });
-
-    // previous()
-    describe('function: previous()', () => {
-
-        //
-        describe('Given an empty list, when the previous item is retrieved, then it', () => {
-            before(() => {
-                linkedList = new LinkedList();
-            });
-
-            // Assert
-            it('should return null.', () => {
-                expect(linkedList.previous()).to.be.null;
-            });
-        });
-
-        //
-        describe('Given a list with one item, when the previous item is retrieved, then it', () => {
-
-            before(() => {
-                linkedList = new LinkedList();
-                linkedList.add('one');
-            });
-
-            // Assert
-            it('should return the one item in the list.', () => {
-                expect(linkedList.previous()).to.eq('one');
-            });
-            it('should return the one item in the list after subsequent calls.', () => {
-                expect(linkedList.previous()).to.eq('one');
-            });
-        });
-
-        //
-        describe('Given a list with multiple items, when the next item is retrieved, then it', () => {
-
-            before(() => {
-                linkedList = new LinkedList();
-                linkedList.add('one');
-                linkedList.add('two');
-                linkedList.add('three');
-            });
-
-            // Assert
-            it('should return the last item in the list after the first call.', () => {
-                expect(linkedList.previous()).to.eq('three');
-            });
-            it('should return the second item in the list after the second call.', () => {
-                expect(linkedList.previous()).to.eq('two');
-            });
-            it('should return the first item in the list after the third call.', () => {
-                expect(linkedList.previous()).to.eq('one');
-            });
-            it('should return the last item in the list after the fourth call.', () => {
-                expect(linkedList.previous()).to.eq('three');
-            });
-        });
-
     });
 });
