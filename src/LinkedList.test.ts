@@ -10,8 +10,9 @@ const expect = chai.expect;
 describe('Class: LinkedList', () => {
 
     let linkedList: LinkedList;
-    let oldNode: ListNode;
-    let newNode: ListNode;
+    let firstNode: ListNode;
+    let secondNode: ListNode;
+    let thirdNode: ListNode;
 
     // addFirst()
     describe('function: addFirst()', () => {
@@ -20,22 +21,19 @@ describe('Class: LinkedList', () => {
         describe('Given an empty list, when an item is added to beginning of the list, then it', () => {
             before(() => {
                 linkedList = new LinkedList();
-                newNode = linkedList.addFirst('one');
+                firstNode = linkedList.addFirst('one');
             });
             it('should return the new ListNode that was created', () => {
-                expect(newNode).to.not.be.null;
+                expect(firstNode).to.exist;
             });
             it('should have a value equal to the given value', () => {
-                expect(newNode.value).to.be.eq('one');
+                expect(firstNode.value).to.be.eq('one');
             });
             it('should be the head node', () => {
-                expect(newNode.isHead).to.be.true;
+                expect(firstNode.isHead).to.be.true;
             });
-            it('should point to itself as the previous node', () => {
-                expect(newNode.previous).to.be.eq(newNode);
-            });
-            it('should point to itself as the next node', () => {
-                expect(newNode.next).to.be.eq(newNode);
+            it('should point to null', () => {
+                expect(firstNode.next).to.not.exist;
             });
         });
 
@@ -43,26 +41,25 @@ describe('Class: LinkedList', () => {
         describe('Given a populated list, when an item is added to beginning of the list, then it', () => {
             before(() => {
                 linkedList = new LinkedList();
-                oldNode = linkedList.addFirst('one');
-                newNode = linkedList.addFirst('two');
+                thirdNode = linkedList.addFirst('three');
+                secondNode = linkedList.addFirst('two');
+                firstNode = linkedList.addFirst('one');
             });
             it('should return the new ListNode that was created', () => {
-                expect(newNode).to.not.be.null;
+                expect(firstNode).to.exist;
             });
             it('should have a value equal to the given value', () => {
-                expect(newNode.value).to.be.eq('two');
+                expect(firstNode.value).to.be.eq('one');
             });
             it('should be the head node', () => {
-                expect(newNode.isHead).to.be.true;
+                expect(firstNode.isHead).to.be.true;
             });
             it('should update the previous head node to no longer be the head node', () => {
-                expect(oldNode.isHead).to.be.false;
+                expect(secondNode.isHead).to.be.false;
+                expect(thirdNode.isHead).to.be.false;
             });
-            it('should point to the old head node as the previous node', () => {
-                expect(newNode.previous).to.be.eq(oldNode);
-            });
-            it('should point to the old head node as the next node', () => {
-                expect(newNode.next).to.be.eq(oldNode);
+            it('should point to the previous first node', () => {
+                expect(firstNode.next).to.exist.and.eq(secondNode);
             });
         });
     });
@@ -84,92 +81,11 @@ describe('Class: LinkedList', () => {
         describe('Given an populated list, when the head of the list is requested, then it', () => {
             before(() => {
                 linkedList = new LinkedList();
-                oldNode = linkedList.addFirst('one');
-                newNode = linkedList.addFirst('two');
+                secondNode = linkedList.addFirst('two');
+                firstNode = linkedList.addFirst('one');
             });
             it('should return the head ListNode', () => {
-                expect(linkedList.getHead()).to.be.eq(newNode);
-            });
-        });
-    });
-
-    // addLast()
-    describe('function: addLast()', () => {
-
-        //
-        describe('Given an empty list, when an item is added to end of the list, then it', () => {
-            before(() => {
-                linkedList = new LinkedList();
-                newNode = linkedList.addLast('one');
-            });
-            it('should return the new ListNode that was created', () => {
-                expect(newNode).to.not.be.null;
-            });
-            it('should have a value equal to the given value', () => {
-                expect(newNode.value).to.be.eq('one');
-            });
-            it('should be the head node', () => {
-                expect(newNode.isHead).to.be.true;
-            });
-            it('should point to itself as the previous node', () => {
-                expect(newNode.previous).to.be.eq(newNode);
-            });
-            it('should point to itself as the next node', () => {
-                expect(newNode.next).to.be.eq(newNode);
-            });
-        });
-
-        //
-        describe('Given a populated list, when an item is added to beginning of the list, then it', () => {
-            before(() => {
-                linkedList = new LinkedList();
-                oldNode = linkedList.addLast('one');
-                newNode = linkedList.addLast('two');
-            });
-            it('should return the new ListNode that was created', () => {
-                expect(newNode).to.not.be.null;
-            });
-            it('should have a value equal to the given value', () => {
-                expect(newNode.value).to.be.eq('two');
-            });
-            it('should not be the head node', () => {
-                expect(newNode.isHead).to.be.false;
-            });
-            it('should retain the current head node as the head node', () => {
-                expect(oldNode.isHead).to.be.true;
-            });
-            it('should point to the old last node as the previous node', () => {
-                expect(newNode.previous).to.be.eq(oldNode);
-            });
-            it('should point to the head node as the next node', () => {
-                expect(newNode.next).to.be.eq(oldNode);
-            });
-        });
-    });
-
-    // length()
-    describe('function: length()', () => {
-
-        //
-        describe('Given an empty list, when the length is returned, then it', () => {
-            before(() => {
-                linkedList = new LinkedList();
-            });
-            it('should return zero', () => {
-                expect(linkedList.length()).to.be.eq(0);
-            });
-        });
-
-        //
-        describe('Given a populated list, when the length is returned, then it', () => {
-            before(() => {
-                linkedList = new LinkedList();
-                linkedList.addLast('one');
-                linkedList.addLast('two');
-                linkedList.addLast('three');
-            });
-            it('should return the number of items in the list', () => {
-                expect(linkedList.length()).to.be.eq(3);
+                expect(linkedList.getHead()).to.exist.and.eq(firstNode);
             });
         });
     });
@@ -196,8 +112,9 @@ describe('Class: LinkedList', () => {
         describe('Given an populated list, when an item at an index is returned, then it', () => {
             before(() => {
                 linkedList = new LinkedList();
-                oldNode = linkedList.addLast('one');
-                newNode = linkedList.addLast('two');
+                linkedList.addFirst('three');
+                linkedList.addFirst('two');
+                linkedList.addFirst('one');
             });
             it('should throw an error indicating the invalid index if it is less than zero', () => {
                 try {
@@ -216,8 +133,45 @@ describe('Class: LinkedList', () => {
                 }
             });
             it('should return the ListNode at the given index', () => {
-                expect(linkedList.get(1)).to.be.eq(newNode);
+                expect(linkedList.get(2).value).to.eq('three');
             });
         });
+    });
+
+    // values()
+    describe('function: values()', () => {
+
+        //
+        describe('Given an empty list, when the list of values is returned, then it', () => {
+            before(() => {
+                linkedList = new LinkedList();
+            });
+            it('should return an array', () => {
+                expect(linkedList.values()).to.exist;
+            });
+            it('should return an empty array', () => {
+                expect(linkedList.values().length).to.be.eq(0);
+            });
+        });
+
+        //
+        describe('Given a populated list, when the list of values is returned, then it', () => {
+            before(() => {
+                linkedList = new LinkedList();
+                linkedList.addFirst('three');
+                linkedList.addFirst('two');
+                linkedList.addFirst('one');
+            });
+            it('should return an array', () => {
+                expect(linkedList.values()).to.exist;
+            });
+            it('should return an array with the list items', () => {
+                const values: Array<string> = linkedList.values();
+                expect(values[0]).to.be.eq('one');
+                expect(values[1]).to.be.eq('two');
+                expect(values[2]).to.be.eq('three');
+            });
+        });
+
     });
 });

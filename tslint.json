@@ -20,7 +20,10 @@
         "no-unused-expression": false,
 
         // To allow third-party pure JavaScript libraries (otherwise, do always use @types for imports)
-        "no-var-requires": false
+        "no-var-requires": false,
+
+        // To allow for console.log() during development
+        "no-console": false
     },
 
     // Default TSLint behavior for everything else.
