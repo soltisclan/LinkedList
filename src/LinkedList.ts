@@ -7,7 +7,7 @@ export class LinkedList {
      * @param value the data value to be contained in the new ListNode.
      * @returns the ListNode that was created, containing the given data value.
      */
-    public addFirst(value: string): ListNode {
+    public addToHead(value: string): ListNode {
 
         // TODO
         return;

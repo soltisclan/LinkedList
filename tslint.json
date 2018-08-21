@@ -23,7 +23,13 @@
         "no-var-requires": false,
 
         // To allow for console.log() during development
-        "no-console": false
+        "no-console": false,
+
+        // Loosened formatting rules to reduce novice dev confusion
+        "no-trailing-whitespace": false,
+        "no-consecutive-blank-lines": false,
+        "prefer-const": false,
+        "typedef-whitespace": false,
     },
 
     // Default TSLint behavior for everything else.

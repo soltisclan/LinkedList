@@ -15,15 +15,15 @@ describe('Class: LinkedList', () => {
     let thirdNode: ListNode;
 
     // addFirst()
-    describe('function: addFirst()', () => {
+    describe('function: addToHead()', () => {
 
         //
-        describe('Given an empty list, when an item is added to beginning of the list, then it', () => {
+        describe('Given an empty list, when an value is added to head of the of the list, then it', () => {
             before(() => {
                 linkedList = new LinkedList();
-                firstNode = linkedList.addFirst('one');
+                firstNode = linkedList.addToHead('one');
             });
-            it('should return the new ListNode that was created', () => {
+            it('should create and return a new ListNode that', () => {
                 expect(firstNode).to.exist;
             });
             it('should have a value equal to the given value', () => {
@@ -38,14 +38,14 @@ describe('Class: LinkedList', () => {
         });
 
         //
-        describe('Given a populated list, when an item is added to beginning of the list, then it', () => {
+        describe('Given a populated list, when a value is added to head of the list, then it', () => {
             before(() => {
                 linkedList = new LinkedList();
-                thirdNode = linkedList.addFirst('three');
-                secondNode = linkedList.addFirst('two');
-                firstNode = linkedList.addFirst('one');
+                thirdNode = linkedList.addToHead('three');
+                secondNode = linkedList.addToHead('two');
+                firstNode = linkedList.addToHead('one');
             });
-            it('should return the new ListNode that was created', () => {
+            it('should create and return a new ListNode that', () => {
                 expect(firstNode).to.exist;
             });
             it('should have a value equal to the given value', () => {
@@ -58,7 +58,7 @@ describe('Class: LinkedList', () => {
                 expect(secondNode.isHead).to.be.false;
                 expect(thirdNode.isHead).to.be.false;
             });
-            it('should point to the previous first node', () => {
+            it('should point to the previous head node', () => {
                 expect(firstNode.next).to.exist.and.eq(secondNode);
             });
         });
@@ -78,11 +78,11 @@ describe('Class: LinkedList', () => {
         });
 
         //
-        describe('Given an populated list, when the head of the list is requested, then it', () => {
+        describe('Given a populated list, when the head of the list is requested, then it', () => {
             before(() => {
                 linkedList = new LinkedList();
-                secondNode = linkedList.addFirst('two');
-                firstNode = linkedList.addFirst('one');
+                secondNode = linkedList.addToHead('two');
+                firstNode = linkedList.addToHead('one');
             });
             it('should return the head ListNode', () => {
                 expect(linkedList.getHead()).to.exist.and.eq(firstNode);
@@ -94,7 +94,7 @@ describe('Class: LinkedList', () => {
     describe('function: get()', () => {
 
         //
-        describe('Given an empty list, when an item at an index is returned, then it', () => {
+        describe('Given an empty list, when a ListNode at a specific index is requested, then it', () => {
             before(() => {
                 linkedList = new LinkedList();
             });
@@ -109,12 +109,12 @@ describe('Class: LinkedList', () => {
         });
 
         //
-        describe('Given an populated list, when an item at an index is returned, then it', () => {
+        describe('Given a populated list, when a ListNode at a specific index is requested, then it', () => {
             before(() => {
                 linkedList = new LinkedList();
-                linkedList.addFirst('three');
-                linkedList.addFirst('two');
-                linkedList.addFirst('one');
+                linkedList.addToHead('three');
+                linkedList.addToHead('two');
+                linkedList.addToHead('one');
             });
             it('should throw an error indicating the invalid index if it is less than zero', () => {
                 try {
@@ -142,7 +142,7 @@ describe('Class: LinkedList', () => {
     describe('function: values()', () => {
 
         //
-        describe('Given an empty list, when the list of values is returned, then it', () => {
+        describe('Given an empty list, when the list of node values is returned, then it', () => {
             before(() => {
                 linkedList = new LinkedList();
             });
@@ -155,12 +155,12 @@ describe('Class: LinkedList', () => {
         });
 
         //
-        describe('Given a populated list, when the list of values is returned, then it', () => {
+        describe('Given a populated list, when the list of node values is returned, then it', () => {
             before(() => {
                 linkedList = new LinkedList();
-                linkedList.addFirst('three');
-                linkedList.addFirst('two');
-                linkedList.addFirst('one');
+                linkedList.addToHead('three');
+                linkedList.addToHead('two');
+                linkedList.addToHead('one');
             });
             it('should return an array', () => {
                 expect(linkedList.values()).to.exist;
