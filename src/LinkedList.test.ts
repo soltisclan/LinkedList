@@ -18,7 +18,7 @@ describe('Class: LinkedList', () => {
     describe('function: addToHead()', () => {
 
         //
-        describe('Given an empty list, when an value is added to head of the of the list, then it', () => {
+        describe('Given an empty list, when a value is added to head of the of the list, then it', () => {
             before(() => {
                 linkedList = new LinkedList();
                 firstNode = linkedList.addToHead('one');
