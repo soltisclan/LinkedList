@@ -4,7 +4,8 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "test": "nyc mocha -w --reporter spec --compilers ts:ts-node/register 'src/**/*.test.ts'"
+    "test": "nyc mocha -w --reporter spec --compilers ts:ts-node/register 'src/**/*.test.ts'",
+    "testwin": "nyc mocha -w --reporter spec --compilers ts:ts-node/register .\\src\\*.test.ts"
   },
   "author": "",
   "license": "ISC",
