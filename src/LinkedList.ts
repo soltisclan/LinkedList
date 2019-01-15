@@ -2,6 +2,8 @@ import { ListNode } from './ListNode';
 
 export class LinkedList {
 
+    private head: ListNode = null;
+
     /**
      * Add the given data value to the beginning of the list.
      * @param value the data value to be contained in the new ListNode.
