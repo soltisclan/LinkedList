@@ -1,6 +1,6 @@
 import { } from 'ts-jest';
-import { LinkedList } from './LinkedList';
-import { ListNode } from './ListNode';
+import { LinkedList } from '../LinkedList';
+import { ListNode } from '../ListNode';
 
 // LinkedList Test
 describe('Class: LinkedList', () => {
