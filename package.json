@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/core-js": "^2.5.0",
     "@types/node": "10.5.7",
+    "core-js": "^2.6.2",
     "node": "10.8.0",
     "ts-node": "7.0.0",
     "typescript": "3.0.1"
