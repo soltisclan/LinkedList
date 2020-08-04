@@ -10,7 +10,7 @@ A project to assess basic programming aptitude.
    
 3) Clone this repository from the termainal/command line from a parent directory containing git repositories (such as /Users/myusername/git):
 ```
-   git clone https://github.com/TStuchel/LinkedListTest.git
+   git clone https://github.com/soltisclan/LinkedListTest.git
 ```
 
 4) Install dependencies (from the terminal/command line within the /LinkedListTest directory)
