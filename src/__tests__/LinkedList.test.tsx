@@ -25,7 +25,7 @@ describe('Class: LinkedList', () => {
             it('should have a value equal to the given value', () => {
                 expect(firstNode.value).toEqual('one');
             });
-            it('should point to null', () => {
+            it('should point to null next node', () => {
                 expect(firstNode.next).toBeNull();
             });
         });

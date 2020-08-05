@@ -1,20 +1,19 @@
 {
-  "name": "linkedlisttest",
+  "name": "linkedlist",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
   "scripts": {
-    "test": "jest --watch",
-    "testwin": "jest --watch"
+    "test": "jest --watch"
   },
+  "repository": "github:soltisclan/linkedlist",
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "typescript": "3.0.1"
+    "typescript": "^3.9.7"
   },
   "devDependencies": {
-    "@types/jest": "^23.3.12",
-    "jest": "^23.6.0",
-    "ts-jest": "^23.10.5"
+    "@types/jest": "^26.0.8",
+    "jest": "^26.2.2",
+    "ts-jest": "^26.1.4"
   }
 }
