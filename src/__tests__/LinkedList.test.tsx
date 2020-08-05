@@ -25,9 +25,6 @@ describe('Class: LinkedList', () => {
             it('should have a value equal to the given value', () => {
                 expect(firstNode.value).toEqual('one');
             });
-            it('should be the head node', () => {
-                expect(firstNode.isHead).toBe(true);
-            });
             it('should point to null', () => {
                 expect(firstNode.next).toBeNull();
             });
@@ -46,13 +43,6 @@ describe('Class: LinkedList', () => {
             });
             it('should have a value equal to the given value', () => {
                 expect(firstNode.value).toEqual('one');
-            });
-            it('should be the head node', () => {
-                expect(firstNode.isHead).toBe(true);
-            });
-            it('should update the previous head node to no longer be the head node', () => {
-                expect(secondNode.isHead).toBe(false);
-                expect(thirdNode.isHead).toBe(false);
             });
             it('should point to the previous head node', () => {
                 expect(firstNode.next).toBe(secondNode);
