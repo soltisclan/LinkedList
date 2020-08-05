@@ -7,10 +7,11 @@
         "preserveConstEnums": true,
         "outDir": "dist/",
         "sourceMap": true,
-        "types" : [ "node", "core-js" ],
-        "lib" : [ "es2016", "dom"],
+        "lib": [
+            "es2016",
+            "dom"
+        ],
         "experimentalDecorators": true
-
     },
     "include": [
         "src/**/*"
